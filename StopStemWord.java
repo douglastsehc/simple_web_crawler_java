@@ -1,5 +1,5 @@
-package javafile;
-import IRUtilities.*;
+package io.stockgeeks.repository;
+import io.stockgeeks.repository.IRUtilities.*;
 import java.io.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,7 +16,7 @@ public class StopStemWord {
         super();
         porter = new Porter();
         stopWords=new Vector<>();
-        File f = new File("/root/comp4321/phase11/stopwords.txt");
+        File f = new File("/home/isabella/Documents/4321/ProjFinal/rocksdbBootApp-master/src/main/java/io/stockgeeks/repository/stopwords.txt");
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -27,15 +27,15 @@ public class StopStemWord {
         }
     }
 
-	private boolean isStopWord(String str)
+	public boolean isStopWord(String str)
 	{
 		return stopWords.contains(str);
 	}
 
-    private String stem(String str) {
+    public String stem(String str) {
         return porter.stripAffixes(str);
     }
-    
+
     public Vector<String> deleteSpecialSymbol(Vector<String> words) {
         Vector<String> output = new Vector<String>();
         // System.out.println("Keywords in "+crawler_child.url+":");
@@ -50,7 +50,7 @@ public class StopStemWord {
             boolean startisDelimiter = strippedInput.startsWith("{") || strippedInput.startsWith("(")
                     || strippedInput.startsWith("[");
 
-            boolean endWithStartDelimiter = strippedInput.endsWith("]") || strippedInput.endsWith(")") 
+            boolean endWithStartDelimiter = strippedInput.endsWith("]") || strippedInput.endsWith(")")
                     || strippedInput.endsWith("}");
             if (endisDelimiter)
                 strippedInput = strippedInput.substring(0, strippedInput.length() - 1);
@@ -113,5 +113,5 @@ public class StopStemWord {
         }
         temp.addAll(content);
         return temp;
-    } */        
+    } */
 }

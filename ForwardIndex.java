@@ -1,5 +1,5 @@
 
-package javafile;
+package io.stockgeeks.repository;
 import org.rocksdb.RocksDB;
 import org.rocksdb.Options;
 import org.rocksdb.RocksDBException;
